@@ -1,6 +1,25 @@
-# Getting Started with Create React App
+# Broccoli Invite
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+PC 页面 & 移动端友好
+单测
+    单测覆盖用例
+        接口请求
+        UI 完整性
+        用户交互链路完整性
+兼容性测试
+    跨浏览器
+
+移动端自适应
+    css：rem、vh？
+
+类型系统
+webpack
+typescript
+文件架构
+eslint 代码规范
+errorboundary
+状态管理？redux、mobx？
+
 
 ## Available Scripts
 
