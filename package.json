@@ -17,6 +17,7 @@
     "@typescript-eslint/eslint-plugin": "^5.19.0",
     "@typescript-eslint/parser": "^5.19.0",
     "babel-loader": "^8.2.4",
+    "core-js": "^3.22.0",
     "css-loader": "^6.7.1",
     "eslint": "^8.13.0",
     "eslint-plugin-react-hooks": "^4.4.0",
@@ -44,5 +45,12 @@
     "lint": "npm run lint:js & npm run lint:style",
     "lint:js": "eslint --fix ./src/**/*",
     "lint:style": "stylelint --fix ./src/**/*.less"
-  }
+  },
+  "browserslist": [
+    "defaults",
+    "> 0.25%",
+    "IE 10",
+    "last 5 version",
+    "cover 99.5%"
+  ]
 }

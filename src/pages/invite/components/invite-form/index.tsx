@@ -9,56 +9,66 @@ interface FormValues {
     confirmEmail: string;
 }
 
-/**
- * check form data whether valid
- */
-const validForm = ({ name, email, confirmEmail }: FormValues) => {
-
-    const EMIAL_REGEX = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/;
-
-    if (!name || name.length < 3) {
-        return {
-            isValid: false,
-            error: 'Your full name length cannot less than 3'
-        }
-    }
-
-    console.log(email, EMIAL_REGEX.test(email))
-
-    if (!EMIAL_REGEX.test(email)) {
-        return {
-            isValid: false,
-            error: 'Please enter a valid email'
-        }
-    }
-
-    if (email !== confirmEmail) {
-        return {
-            isValid: false,
-            error: 'Your emails do not match'
-        }
-    }
-
-    return {
-        isValid: true,
-        error: ''
-    }
-
-
-}
-
 interface InviteFormProps {
     onSubmitSuccess: () => void;
 }
 
+const EMIAL_REGEX = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/;
+const HARDCODE_EMAIL = 'usedemail@airwallex.com';
+
 function InviteForm({ onSubmitSuccess }: InviteFormProps) {
 
     const [errorMsg, setErrorMsg] = useState('');
+    const [errorFieldName, setErrorFieldName] = useState('');
 
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [confirmEmail, setConfirmEmail] = useState('');
     const [isLoading, setIsLoading] = useState(false);
+
+    /**
+ * check form data whether valid
+ */
+    const validForm = ({ name, email, confirmEmail }: FormValues) => {
+
+        if (!name || name.length < 3) {
+            setErrorFieldName('name');
+            return {
+                isValid: false,
+                error: 'Your full name length cannot less than 3'
+            }
+        }
+
+        if (!EMIAL_REGEX.test(email)) {
+            setErrorFieldName('email');
+            return {
+                isValid: false,
+                error: 'Please enter a valid email'
+            }
+        } else if (email === HARDCODE_EMAIL) {
+            setErrorFieldName('email');
+            return {
+                isValid: false,
+                error: 'Email is already in use'
+            }
+        }
+
+        if (email !== confirmEmail) {
+            setErrorFieldName('confirmEmail');
+            return {
+                isValid: false,
+                error: 'Your emails do not match'
+            }
+        }
+
+        setErrorFieldName('');
+
+        return {
+            isValid: true,
+            error: ''
+        }
+
+    }
 
     const submit = async () => {
         const { isValid, error } = validForm({ name, email, confirmEmail });
@@ -67,12 +77,12 @@ function InviteForm({ onSubmitSuccess }: InviteFormProps) {
 
         if (isValid && !isLoading) {
             setIsLoading(true);
-            const { error, status } = await sendInviteApply({ name, email });
+            const { data: { errorMessage }, status } = await sendInviteApply({ name, email });
 
             if (status === 200) {
                 onSubmitSuccess();
             } else {
-                setErrorMsg(error);
+                setErrorMsg(errorMessage);
             }
 
             setIsLoading(false);
@@ -99,19 +109,22 @@ function InviteForm({ onSubmitSuccess }: InviteFormProps) {
             <p className="bc-bottom-line"></p>
         </div>
         <div className="bc-form-item">
-            <input type="text" placeholder="Full Name" name="name"
+            <input type="text" placeholder="Full name" name="name"
+                style={{ borderColor: errorFieldName === 'name' ? 'red' : '#333' }}
                 onChange={(e) => {
                     onValueChange('name', e.target.value)
                 }} />
         </div>
         <div className="bc-form-item">
             <input type="text" placeholder="Email" name="email"
+                style={{ borderColor: errorFieldName === 'email' ? 'red' : '#333' }}
                 onChange={(e) => {
                     onValueChange('email', e.target.value)
                 }} />
         </div>
         <div className="bc-form-item">
             <input type="text" placeholder="Confirm email" name="confirmEmail"
+                style={{ borderColor: errorFieldName === 'confirmEmail' ? 'red' : '#333' }}
                 onChange={(e) => {
                     onValueChange('confirmEmail', e.target.value)
                 }} />

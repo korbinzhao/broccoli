@@ -11,7 +11,7 @@ describe('sendApply', () => {
     it('should response with error', async () => {
         const res = await sendInviteApply({ email: 'jack@hotmail.com' });
 
-        expect(!!res.error).toBe(true);
+        expect(res.status).toBe(400);
     });
 
 });

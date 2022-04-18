@@ -10,17 +10,14 @@ export interface InviteApplyData {
  * send an invite apply
  */
 export async function sendInviteApply(data: InviteApplyData) {
+
     const res = await axios({
         method: inviteApply.method,
         url: inviteApply.api,
         data
-    }).catch(err => err);
-
-    if (res instanceof Error) {
-        return {
-            error: res.message
-        }
-    }
+    }).catch(err => {
+        return err.response;
+    });
 
     return res;
 }

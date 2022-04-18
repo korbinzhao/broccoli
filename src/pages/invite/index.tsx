@@ -34,7 +34,7 @@ function Invite() {
     }
 
     return <div className="bc-invite-container">
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<div className="bc-loading">Loading...</div>}>
             <InviteContent onInviteButtonClick={onInviteButtonClick} />
             <FormModal
                 visible={formModalVisible}
