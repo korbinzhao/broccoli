@@ -5,7 +5,7 @@
   "scripts": {
     "start": "webpack serve",
     "build": "webpack",
-    "test": "jest --coverage",
+    "test": "jest",
     "lint": "npm run lint:js & npm run lint:style",
     "lint:js": "eslint --fix ./src/**/*",
     "lint:style": "stylelint --fix ./src/**/*.less"
