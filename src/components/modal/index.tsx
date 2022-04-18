@@ -19,7 +19,6 @@ function Modal(ModalContentComponent: React.FunctionComponent<any>) {
             return null;
         }
 
-        // 将 input 组件包装在容器中，而不对其进行修改。Good!
         return <div className="bc-modal-container" style={{ width, height, marginLeft: width ? -width / 2 : 0, left: '50%' }}>
             <div className="bc-modal-content">
                 <img
