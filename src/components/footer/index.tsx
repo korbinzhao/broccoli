@@ -4,8 +4,12 @@ import './index.less';
 
 function Footer() {
     return <div className="bc-footer-container">
-        <p>Made with &hearts; in Melbourne.</p>
-        <p>@ 2022 Broccoli & Co. All rights reserved.</p>
+        <p>
+            <i>Made with &hearts; in Melbourne.</i>
+        </p>
+        <p>
+            <i>@ 2022 Broccoli & Co. All rights reserved.</i>
+        </p>
     </div>;
 }
 
