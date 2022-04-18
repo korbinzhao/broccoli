@@ -26,9 +26,15 @@
         "noFallthroughCasesInSwitch": true, // Report errors for fallthrough cases in switch statement
         "baseUrl": ".",
         "paths": {
-            "pages/*": ["./src/pages/*"],
-            "components/*": ["./src/components/*"],
-            "services/*": ["./src/services/*"]
+            "pages/*": [
+                "./src/pages/*"
+            ],
+            "components/*": [
+                "./src/components/*"
+            ],
+            "services/*": [
+                "./src/services/*"
+            ]
         }
     },
     "include": [

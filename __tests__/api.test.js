@@ -8,7 +8,7 @@ describe('sendApply', () => {
         expect(res.status).toBe(200);
     });
 
-    it('should response with error', async () => {
+    it('should response status 400', async () => {
         const res = await sendInviteApply({ email: 'jack@hotmail.com' });
 
         expect(res.status).toBe(400);

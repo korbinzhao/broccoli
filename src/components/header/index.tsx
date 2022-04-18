@@ -4,7 +4,7 @@ import './index.less';
 
 function Header() {
     return <div className="bc-header-container">
-        <h2>BROCCOLI & CO.</h2>
+        <h3>BROCCOLI & CO.</h3>
     </div>;
 }
 

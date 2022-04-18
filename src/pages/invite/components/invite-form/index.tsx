@@ -104,7 +104,7 @@ function InviteForm({ onSubmitSuccess }: InviteFormProps) {
     }
 
     return <div className="bc-invite-form-container">
-        <div className="bc-form-title">
+        <div className="bc-title">
             <p>Request an invite</p>
             <p className="bc-bottom-line"></p>
         </div>
@@ -135,6 +135,11 @@ function InviteForm({ onSubmitSuccess }: InviteFormProps) {
                 className="bc-button"
                 onClick={submit}
                 disabled={isLoading}
+                style={{
+                    backgroundColor: isLoading ? '#EBF5FB' : '',
+                    cursor: isLoading ? 'default' : '',
+                    color: isLoading ? '#333' : '#fff'
+                }}
             >
                 {isLoading ? 'Sending, please wait...' : 'Send'}
             </button>

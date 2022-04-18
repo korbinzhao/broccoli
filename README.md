@@ -1,92 +1,119 @@
 # Broccoli Invite
 
-PC 页面 & 移动端友好
-单测
-    单测覆盖用例
-        接口请求
-        UI 完整性
-        用户交互链路完整性
-兼容性测试
-    跨浏览器
-    webpack 配置
-
-移动端自适应
-    css：rem、vh？
-
-性能优化
-
-类型系统
-webpack
-typescript
-文件架构
-eslint 代码规范
-errorboundary
-状态管理？redux、mobx？
-
-
 ## Available Scripts
 
 In the project directory, you can run:
 
+### `npm install`
+install dependencies
+
 ### `npm start`
 
 Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Open [http://localhost:9000](http://localhost:9000) to view it in your browser.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-### `npm test`
+### `npm run test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+run unit tests using jest.
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Builds the app for production to the `dist` folder.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## File structure
+```
+.
+├── README.md
+├── __tests__
+├── coverage
+├── dist
+├── jest.config.js
+├── package-lock.json
+├── package.json
+├── public
+├── src
+│   ├── components
+│   │   ├── footer
+│   │   │   ├── index.less
+│   │   │   └── index.tsx
+│   │   ├── header
+│   │   │   ├── index.less
+│   │   │   └── index.tsx
+│   │   ├── layout
+│   │   │   ├── index.less
+│   │   │   └── index.tsx
+│   │   └── modal
+│   │       ├── index.less
+│   │       └── index.tsx
+│   ├── pages
+│   │   └── invite
+│   │       ├── components
+│   │       │   ├── invite-content
+│   │       │   │   ├── index.less
+│   │       │   │   └── index.tsx
+│   │       │   ├── invite-form
+│   │       │   │   ├── index.less
+│   │       │   │   └── index.tsx
+│   │       │   └── success-panel
+│   │       │       ├── index.less
+│   │       │       └── index.tsx
+│   │       ├── index.less
+│   │       └── index.tsx
+│   ├── services
+│   │   ├── apis
+│   │   │   └── invite.ts
+│   │   └── invite.ts
+│   ├── global.less
+│   ├── index.html
+│   ├── index.tsx
+│   └── typings.d.ts
+├── tsconfig.json
+└── webpack.config.js
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
 
-### `npm run eject`
+## Architecture Introduce
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Fromework Tools
+React18 + Webpack5 + Typescript + babel7 + less + jest + eslint
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Unit tests
+UI and function unit tests using jest.
+Cover the following conditions:
+* name field do not validate properly
+* email field do not validate properly
+* confirmEmail field do not equal to email field
+* all form fields validate properly
+* api response with status 200
+* api response with status 400
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Performance optimization
+* Webpack externals
+* Webpack code splitting
+* React.lazy & Suspense
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+### Type system
+* typescript
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Browser compatibility
 
-### Code Splitting
+Cover browsers account for 96.72% of all users globally.
+```
+"browserslist": [
+  "defaults",
+  "> 0.05%",
+  "cover 99.5%"
+]
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```
+browserslist --coverage '> 0.05%, defaults, cover 99.5%'
+>> These browsers account for 96.72% of all users globally
+```
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

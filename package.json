@@ -2,6 +2,14 @@
   "name": "broccoli-invite",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "start": "webpack serve",
+    "build": "webpack",
+    "test": "jest --coverage",
+    "lint": "npm run lint:js & npm run lint:style",
+    "lint:js": "eslint --fix ./src/**/*",
+    "lint:style": "stylelint --fix ./src/**/*.less"
+  },
   "dependencies": {
     "axios": "^0.26.1",
     "react": "^18.0.0",
@@ -38,19 +46,9 @@
     "webpack-cli": "^4.9.2",
     "webpack-dev-server": "^4.8.1"
   },
-  "scripts": {
-    "start": "webpack serve",
-    "build": "webpack",
-    "test": "jest",
-    "lint": "npm run lint:js & npm run lint:style",
-    "lint:js": "eslint --fix ./src/**/*",
-    "lint:style": "stylelint --fix ./src/**/*.less"
-  },
   "browserslist": [
     "defaults",
-    "> 0.25%",
-    "IE 10",
-    "last 5 version",
+    "> 0.05%",
     "cover 99.5%"
   ]
 }
