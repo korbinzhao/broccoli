@@ -10,7 +10,7 @@ function SuccessPanel({ onClose }: SuccessPanelProps) {
 
     return <div className="success-panel-container">
         <div className="bc-title">
-            <p>All done!</p>
+            <p className="success-panel-status">All done!</p>
             <p className="bc-bottom-line"></p>
         </div>
         <p>You will be one of the first to experience</p>

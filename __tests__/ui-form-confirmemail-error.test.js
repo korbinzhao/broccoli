@@ -12,12 +12,12 @@ describe('ui test', () => {
         await expect(page).toFill('input[name="name"]', 'Jack')
     });
 
-    it('should match a input with a "name" name then fill it with text', async () => {
+    it('should match a input with a "email" name then fill it with text', async () => {
         await expect(page).toFill('input[name="email"]', 'jack@hotmail.com')
     });
 
-    it('should match a input with a "name" name then fill it with text', async () => {
-        await expect(page).toFill('input[name="confirmEmail"]', 'jack@hotmail.com')
+    it('should match a input with a "confirmEmail" name then fill it with text', async () => {
+        await expect(page).toFill('input[name="confirmEmail"]', 'jack2@hotmail.com')
     });
 
     it('should click send button', async () => {
@@ -25,8 +25,15 @@ describe('ui test', () => {
         await expect(page).toClick('button', { text: 'Send' })
     });
 
-    it('should match a button with a "" text inside', async () => {
-        await expect(page).toMatchElement('.bc-error-tip', { text: '' })
+    it('should enter a valid email', async () => {
+
+        const errorTipText = await page.evaluate(() => {
+            const btn = document.querySelector('.bc-error-tip');
+
+            return btn.innerHTML;
+        });
+
+        await expect(errorTipText).toBe('Your emails do not match');
     })
 
 
