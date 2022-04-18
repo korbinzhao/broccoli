@@ -40,8 +40,6 @@ describe('ui test', () => {
 
         const apiResStatus = apiRes.status();
 
-        console.log(apiResStatus, typeof apiResStatus);
-
         const checkResult = await page.evaluate(async (apiResStatus) => {
 
             // wait for page do action 
@@ -84,7 +82,7 @@ describe('ui test', () => {
 
         }, apiResStatus);
 
-        console.log('checkResult', checkResult);
+        // console.log('checkResult', checkResult);
 
         await expect(checkResult.success).toBe(true);
     });

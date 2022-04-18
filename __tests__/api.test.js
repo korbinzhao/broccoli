@@ -1,12 +1,17 @@
-// const inviteApply = require('../src/services/invite');
+const { sendInviteApply } = require('../src/services/invite');
 
-// test('sendApply', () => {
+describe('sendApply', () => {
 
-//     return inviteApply({ name: 'jack', email: 'jack@hotmail.com' }).then(data => {
-//         console.log('--- res ---', data);
+    it('should response status 200', async () => {
+        const res = await sendInviteApply({ name: 'jack', email: 'jack@hotmail.com' });
 
-//         expect(data).toBe('peanut butter');
-//     });
+        expect(res.status).toBe(200);
+    });
 
+    it('should response with error', async () => {
+        const res = await sendInviteApply({ email: 'jack@hotmail.com' });
 
-// });
+        expect(!!res.error).toBe(true);
+    });
+
+});
